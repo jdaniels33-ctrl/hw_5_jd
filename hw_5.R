@@ -11,3 +11,5 @@ balt_homicides <- balt_homicides %>%
 
 #change reported_date to date format with lubridate
 balt_homicides$reported_date <- ymd(balt_homicides$reported_date)
+
+#Need to bin homicides by month
