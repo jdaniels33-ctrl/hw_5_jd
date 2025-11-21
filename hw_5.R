@@ -56,7 +56,7 @@ summary_hom %>%
   scale_fill_discrete(direction = -1) +
   geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
              linewidth = 1, linetype = 2) +
-  geom_smooth(aes(fill = NULL), se = FALSE)
+  geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15)
 
 
   
