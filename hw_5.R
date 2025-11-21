@@ -32,6 +32,23 @@ balt_homicides <- balt_homicides %>%
 balt_homicides$yr_month <- ym(balt_homicides$yr_month)
 #this last column is ugly but should work because year and month are correct
 #Ignore the day!
-         
 
+#Found 132 bins for months, so I used the following in the console
+#balt_homicides %>% distinct(yr_month)
+# A tibble: 132 × 1 
+
+#Generate the figure
+balt_homicides %>% 
+  ggplot(aes(x = yr_month, fill = cold_vs_warm)) +
+  geom_histogram(bins = 132, colour = "black") +
+  scale_fill_discrete(direction = -1) +
+  geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
+             linewidth = 1, linetype = 2)
+
+  
+
+  
+  
+
+  
 
