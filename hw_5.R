@@ -33,17 +33,35 @@ balt_homicides$yr_month <- ym(balt_homicides$yr_month)
 #this last column is ugly but should work because year and month are correct
 #Ignore the day!
 
-#Found 132 bins for months, so I used the following in the console
-#balt_homicides %>% distinct(yr_month)
-# A tibble: 132 × 1 
 
-#Generate the figure
-balt_homicides %>% 
-  ggplot(aes(x = yr_month, fill = cold_vs_warm)) +
-  geom_histogram(bins = 132, colour = "black") +
+# I can't generate a smooth line geom with a histogram. Need actual Y counts it
+# seems.
+
+summary_hom <- balt_homicides %>% 
+  group_by(yr_month) %>% 
+  summarise(count = n(),
+            climate = cold_vs_warm) %>% 
+  ungroup() %>% 
+  unique()
+
+# The above worked, but there is something icky about it that I had to use
+# unique to get it to stop repeating the same value....I feel like the sausage
+# should not be made this way.
+
+# Lets try the figure now with a smoothing line and geom_bar instead...
+
+summary_hom %>% 
+  ggplot(aes(x = yr_month, y = count, fill = climate)) +
+  geom_bar(stat = "identity") +
   scale_fill_discrete(direction = -1) +
   geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
-             linewidth = 1, linetype = 2)
+             linewidth = 1, linetype = 2) +
+  geom_smooth(aes(fill = NULL), se = FALSE)
+
+
+  
+  
+
 
   
 
