@@ -1,5 +1,7 @@
 library(tidyverse)
 library(ggthemes)
+library(viridis)
+
 
 #load dataset and filter Baltimore homicides
 balt_homicides <- read_csv("data/homicide-data.csv") %>% 
@@ -52,14 +54,22 @@ summary_hom <- balt_homicides %>%
 
 summary_hom %>% 
   ggplot(aes(x = yr_month, y = count, fill = climate)) +
-  geom_bar(stat = "identity") + 
+  geom_bar(stat = "identity") +
   #The above: something I learned since having to use
   #geom bar instead of geom_histogram.
+  scale_fill_manual(values = c("winter" = "cyan1", "summer" = "cornsilk")) +
   geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
              linewidth = 1, linetype = 2) +
   geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15) +
-  labs(y = "Monthy homicides", title = "Homicides in Baltimore, MD", x = "") +
-  theme(legend.position = "bottom")
+  labs(y = "Monthy homicides", title = "Homicides in Baltimore, MD", x = "",
+       fill = "") +
+  annotate("text", x = ymd("2015-04-01"), y = 40, label= "Arrest of Freddy Gray") +
+  theme_dark() +
+  theme(legend.position = "bottom") #this only works if AFTER the theme_dark
+
+  
+  
+
 
 
   
