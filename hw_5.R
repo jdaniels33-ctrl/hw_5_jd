@@ -52,7 +52,7 @@ summary_hom <- balt_homicides %>%
 
 # Lets try the figure now with a smoothing line and geom_bar instead...
 
-summary_hom %>% 
+hom_fig <- summary_hom %>% #The struggle to generate this figure was real
   ggplot(aes(x = yr_month, y = count, fill = climate)) +
   geom_bar(stat = "identity") +
   #The above: something I learned since having to use
@@ -63,11 +63,13 @@ summary_hom %>%
   geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15) +
   labs(y = "Monthy homicides", title = "Homicides in Baltimore, MD", x = "",
        fill = "") +
-  annotate("text", x = ymd("2015-04-01"), y = 40, label= "Arrest of Freddy Gray") +
+  annotate("text", x = ymd("2014-12-01"), y = 40,
+           label= "Arrest of\n Freddy Gray",
+           size = 6, color = "cornsilk3") +
   theme_dark() +
   theme(legend.position = "bottom") #this only works if AFTER the theme_dark
 
-  
+
   
 
 
