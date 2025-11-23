@@ -58,7 +58,10 @@ summary_hom %>%
   geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
              linewidth = 1, linetype = 2) +
   geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15) +
-  labs(y = "Monthy homicides", title = "Homicides in Baltimore, MD", x = "")
+  labs(y = "Monthy homicides", title = "Homicides in Baltimore, MD", x = "") +
+  theme(legend.position = "bottom")
+
+
   
 
 
