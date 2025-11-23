@@ -1,5 +1,5 @@
 library(tidyverse)
-library(scales)
+library(ggthemes)
 
 #load dataset and filter Baltimore homicides
 balt_homicides <- read_csv("data/homicide-data.csv") %>% 
@@ -17,7 +17,7 @@ balt_homicides <- balt_homicides %>%
   mutate(months = month(reported_date))
 
 balt_homicides <- balt_homicides %>% 
-  mutate(cold_vs_warm = if_else(months %in% c(1:4, 11, 12), "cold", "warm"))
+  mutate(cold_vs_warm = if_else(months %in% c(1:4, 11, 12), "winter", "summer"))
 
 #Need a column that indicates just year and month. Already have a month column
 #in line 15-17, so make a year column and then make another column with both
@@ -52,15 +52,17 @@ summary_hom <- balt_homicides %>%
 
 summary_hom %>% 
   ggplot(aes(x = yr_month, y = count, fill = climate)) +
-  geom_bar(stat = "identity") +
-  scale_fill_discrete(direction = -1) +
+  geom_bar(stat = "identity") + 
+  #The above: something I learned since having to use
+  #geom bar instead of geom_histogram.
   geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
              linewidth = 1, linetype = 2) +
   geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15)
-
-
   
   
+
+
+
 
 
   
