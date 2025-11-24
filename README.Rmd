@@ -5,11 +5,10 @@ date: "2025-11-18"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## This is the README requested in step 7.
 
-# I asked ChatGPT if Tidy Data is a cult and it assured me that it is not.
+# Code chunks removed
+
+## I asked ChatGPT if Tidy Data is a cult and it assured me that it is not. I'm still not sure.
+
 
