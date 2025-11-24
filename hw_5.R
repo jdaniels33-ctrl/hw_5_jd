@@ -60,12 +60,13 @@ hom_fig <- summary_hom %>% #The struggle to generate this figure was real
   scale_fill_manual(values = c("winter" = "cyan1", "summer" = "cornsilk")) +
   geom_vline(xintercept = ymd("2015-04-01"), colour = "red",
              linewidth = 1, linetype = 2) +
-  geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15) +
+  geom_smooth(aes(fill = NULL), se = FALSE, span = 0.15,
+              show.legend = FALSE) +
   labs(y = "Monthy homicides", title = "Homicides in Baltimore, MD", x = "",
        fill = "") +
-  annotate("text", x = ymd("2014-12-01"), y = 40,
+  annotate("text", x = ymd("2014-08-01"), y = 40,
            label= "Arrest of\n Freddy Gray",
-           size = 6, color = "cornsilk3") +
+           size = 3, color = "cornsilk3") +
   theme_dark() +
   theme(legend.position = "bottom") #this only works if AFTER the theme_dark
 
