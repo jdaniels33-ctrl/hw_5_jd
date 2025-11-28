@@ -66,7 +66,7 @@ hom_fig <- summary_hom %>% #The struggle to generate this figure was real
        fill = "") +
   annotate("text", x = ymd("2014-08-01"), y = 40,
            label= "Arrest of\n Freddy Gray",
-           size = 3, color = "cornsilk3") +
+           size = 5, color = "cornsilk3") +
   theme_dark() +
   theme(legend.position = "bottom") #this only works if AFTER the theme_dark
 

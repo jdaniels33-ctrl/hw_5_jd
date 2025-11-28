@@ -7,7 +7,8 @@ output: html_document
 
 ## This is the README requested in step 7.
 
-# Code chunks removed
+# The Rscript file is in the writing folder
+# The figure generated is in the plots folder
 
 ## I asked ChatGPT if Tidy Data is a cult and it assured me that it is not. I'm still not sure.
 
