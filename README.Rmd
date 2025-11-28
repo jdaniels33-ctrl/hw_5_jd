@@ -2,7 +2,7 @@
 title: "EHRS 535 HW 5"
 author: "Josh Daniels"
 date: "2025-11-18"
-output: html_document
+output: github_document
 ---
 
 ## This is the README requested in step 7.
